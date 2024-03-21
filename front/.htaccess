@@ -1,0 +1,21 @@
+ErrorDocument 404 http://localhost/elhace/front/404
+#ErrorDocument 404 https://front.elhace.com/404
+
+
+RewriteEngine On 
+
+RewriteRule ^news/([a-zA-Z0-9-/]+)$ news_detail.php?post_url=$1  
+RewriteRule ^portfolio/([a-zA-Z0-9-/]+)$ portfolio_detail.php?post_url=$1     
+
+#RewriteRule ^portfolio-category/([a-zA-Z0-9-/]+)$ portfolio_category.php?post_url=$1     
+RewriteRule ^portfolio-category portfolio_category.php 
+
+#RewriteRule ^(assets|css)($|/) - [L]
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+
+</IfModule>
